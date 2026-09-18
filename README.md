@@ -1,14 +1,44 @@
 # Bowden-PII
 
-**Version 0.0.1 — developer preview.** Local detection and redaction of supported
-Swiss/EU identifiers, before text is sent to another service.
+Local PII detection and redaction for Swiss and European identifiers.
 
-[Website](https://bowden-pii.com) · [Downloads](https://github.com/48Nauts-Operator/bowden-pii/releases/tag/v0.0.1)
+[![Tests](https://github.com/48Nauts-Operator/bowden-pii/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/48Nauts-Operator/bowden-pii/actions/workflows/ci.yml)
+[![Developer preview 0.0.1](https://img.shields.io/badge/preview-0.0.1-193e35)](https://github.com/48Nauts-Operator/bowden-pii/releases/tag/v0.0.1)
+[![Python 3.11 or newer](https://img.shields.io/badge/python-3.11%2B-3776ab)](https://github.com/48Nauts-Operator/bowden-pii/blob/main/pyproject.toml)
+[![MIT license](https://img.shields.io/badge/license-MIT-193e35)](LICENSE)
+
+[Website](https://bowden-pii.com) · [Downloads](https://github.com/48Nauts-Operator/bowden-pii/releases/tag/v0.0.1) · [Project guide](https://bowden-pii.com/project.html) · [Blog](https://bowden-pii.com/blog/) · [Roadmap](https://bowden-pii.com/#roadmap) · [Contact](mailto:hello@bowden-pii.com)
+
+**Version 0.0.1 is a developer preview.** Detect supported identifiers on your
+own machine and replace them with typed placeholders before forwarding text.
 
 This release provides a working Python API and command-line tool. The default
 rules-based engine has no runtime dependencies and does not need a model or
 network connection. It is early software for evaluation and integration work,
 not a validated general-purpose anonymization system.
+
+## How it works
+
+```mermaid
+flowchart LR
+  subgraph local[Local Python runtime]
+    input[Input text] --> redact[Detect and replace]
+    redact --> output[Redacted text]
+    redact --> map[Original-value map]
+  end
+  output --> service[Your application or AI service]
+```
+
+The original-value map stays with your application. Send only the redacted
+text to the next service. The rules engine runs without a model or network
+connection.
+
+| Available in 0.0.1 | Still experimental or planned |
+| --- | --- |
+| Python API and command-line redaction | Neural name and address detection |
+| Checksum-aware identifier validation | Distributing trained model weights |
+| Three policies and consistent placeholders | Neural processing of long documents |
+| 36 focused tests and a small synthetic benchmark | Broader real-document evaluation |
 
 ## Install
 
@@ -109,6 +139,15 @@ bowden-pii-benchmark data/benchmarks/deterministic_smoke.jsonl
 
 The benchmark compares identifier label counts, not exact character boundaries.
 GitHub Actions tests Python 3.11 and 3.14 and verifies that the package builds.
+
+## Contact and feedback
+
+Email [hello@bowden-pii.com](mailto:hello@bowden-pii.com) for project enquiries.
+Report reproducible problems in [GitHub Issues](https://github.com/48Nauts-Operator/bowden-pii/issues).
+Use synthetic examples in bug reports and leave out personal or confidential data.
+
+See the [visual roadmap](https://bowden-pii.com/#roadmap) for the next work and
+[release notes](https://bowden-pii.com/releases/) for what each download includes.
 
 ## About and license
 
