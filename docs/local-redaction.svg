@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="330" viewBox="0 0 1050 330" role="img" aria-labelledby="title desc">
+<title id="title">Local redaction workflow</title><desc id="desc">Input text is detected and replaced locally. Redacted text goes to your application or AI service. The original-value map stays local.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#57645a"/></marker></defs>
+<rect width="1050" height="330" rx="14" fill="#f7f6ee"/>
+<rect x="24" y="24" width="706" height="280" rx="10" fill="#eef2e7" stroke="#c3d1ba"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#193e35">
+<text x="48" y="58" font-size="15" letter-spacing="2">LOCAL PYTHON RUNTIME</text>
+<g stroke="#57645a" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M218 128 H268"/><path d="M472 128 H518"/><path d="M698 128 H772"/><path d="M370 163 V214"/></g>
+<g stroke="#c3d1ba" fill="#fffef8"><rect x="48" y="94" width="170" height="69" rx="8"/><rect x="518" y="94" width="180" height="69" rx="8"/><rect x="268" y="218" width="240" height="57" rx="8"/></g>
+<rect x="272" y="94" width="200" height="69" rx="8" fill="#193e35"/>
+<rect x="778" y="94" width="244" height="92" rx="8" fill="#f4e4d5" stroke="#ddc0a8"/>
+<g font-size="19" text-anchor="middle"><text x="133" y="135">Input text</text><text x="372" y="135" fill="#fffef8">Detect and replace</text><text x="608" y="135">Redacted text</text><text x="388" y="253">Original-value map</text><text x="900" y="130">Your application</text><text x="900" y="159">or AI service</text></g>
+<text x="535" y="252" font-size="16" fill="#57645a">Stays local</text>
+</g></svg>

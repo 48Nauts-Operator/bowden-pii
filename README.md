@@ -19,15 +19,7 @@ not a validated general-purpose anonymization system.
 
 ## How it works
 
-```mermaid
-flowchart LR
-  subgraph local[Local Python runtime]
-    input[Input text] --> redact[Detect and replace]
-    redact --> output[Redacted text]
-    redact --> map[Original-value map]
-  end
-  output --> service[Your application or AI service]
-```
+![Workflow: input text is detected and replaced locally. Redacted text can go to your application or AI service; the original-value map stays local.](docs/local-redaction.svg)
 
 The original-value map stays with your application. Send only the redacted
 text to the next service. The rules engine runs without a model or network
