@@ -2,6 +2,12 @@ name: Publish developer preview
 on:
   push:
     tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Existing release tag
+        required: true
+        default: v0.0.1
 permissions:
   contents: write
 jobs:
@@ -9,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.version || github.ref }}
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
@@ -20,8 +28,9 @@ jobs:
       - name: Publish pre-release and distributions
         env:
           GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.version || github.ref_name }}
         run: >-
-          gh release create "$GITHUB_REF_NAME" dist/*
+          gh release create "$RELEASE_TAG" dist/*
           --verify-tag --prerelease
-          --title "Bowden-PII $GITHUB_REF_NAME — Developer preview"
+          --title "Bowden-PII $RELEASE_TAG — Developer preview"
           --notes-file CHANGELOG.md
