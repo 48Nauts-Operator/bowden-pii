@@ -1,0 +1,15 @@
+{"id":"det-clean-001","text":"Bitte pruefen: AHV 756.9217.0769.85, IBAN CH93 0076 2011 6238 5295 7, E-Mail anna.keller@example.ch.","expected_labels":["AHV","IBAN","EMAIL"],"slice":"clean","jurisdiction":"CH"}
+{"id":"det-clean-002","text":"Paiement sur le compte CH9300762011623852957 et contact camille.dubois@example.ch.","expected_labels":["IBAN","EMAIL"],"slice":"clean","jurisdiction":"CH"}
+{"id":"det-clean-003","text":"Firma CHE-100.155.212 nutzt Portal https://example.ch/login ab IP 192.168.1.10.","expected_labels":["UID","URL","IP_ADDRESS"],"slice":"clean","jurisdiction":"CH"}
+{"id":"det-clean-004","text":"MWST-Nummer CHE-107.787.577 IVA und Karte 4111 1111 1111 1111.","expected_labels":["VAT_ID","CREDIT_CARD"],"slice":"clean","jurisdiction":"CH"}
+{"id":"det-clean-005","text":"QR-Zahlung an CH57 3000 0123 4567 8901 2, Rueckruf +41 79 123 45 67, MAC aa:bb:cc:dd:ee:ff.","expected_labels":["QR_IBAN","PHONE","MAC_ADDRESS"],"slice":"clean","jurisdiction":"CH"}
+{"id":"det-clean-006","text":"lowercase uid che-100.155.212, website www.example.ch/path, server 2001:db8::1.","expected_labels":["UID","URL","IP_ADDRESS"],"slice":"clean","jurisdiction":"CH"}
+{"id":"det-clean-007","text":"Contact: <anna.keller@example.ch>; phone 079 123 45 67; card 4111111111111111.","expected_labels":["EMAIL","PHONE","CREDIT_CARD"],"slice":"clean","jurisdiction":"CH"}
+{"id":"det-clean-008","text":"Compte QR CH0631000123456789012 et IBAN normal CH9300762011623852957.","expected_labels":["QR_IBAN","IBAN"],"slice":"clean","jurisdiction":"CH"}
+{"id":"det-clean-009","text":"TVA CHE107787577TVA, TPV CHE107787577TPV, MWST CHE-100.155.212 MWST.","expected_labels":["VAT_ID","VAT_ID","VAT_ID"],"slice":"clean","jurisdiction":"CH"}
+{"id":"det-clean-010","text":"Network adapters AA-BB-CC-DD-EE-FF and aa:bb:cc:dd:ee:ff are both local identifiers.","expected_labels":["MAC_ADDRESS","MAC_ADDRESS"],"slice":"clean","jurisdiction":"CH"}
+{"id":"det-negative-001","text":"Regulation 2024/1689 and invoice line 756.9217.0769.84 must not be treated as valid Swiss PII.","expected_labels":[],"slice":"negative","jurisdiction":"EU"}
+{"id":"det-negative-002","text":"CHE-100.155.213 and card 4111 1111 1111 1112 are checksum failures.","expected_labels":[],"slice":"negative","jurisdiction":"CH"}
+{"id":"det-negative-003","text":"Foreign phone +49 30 123456 and invalid IP 999.168.1.10 should not match.","expected_labels":[],"slice":"negative","jurisdiction":"EU"}
+{"id":"det-negative-004","text":"Article CH93 and VAT reform text without a full identifier should not match.","expected_labels":[],"slice":"negative","jurisdiction":"EU"}
+{"id":"det-negative-005","text":"MAC-ish aa:bb:cc:dd:ee is too short and 2001:::db8 is not valid IPv6.","expected_labels":[],"slice":"negative","jurisdiction":"CH"}

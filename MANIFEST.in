@@ -1,0 +1,3 @@
+include CHANGELOG.md
+include data/benchmarks/deterministic_smoke.jsonl
+recursive-include tests *.py
